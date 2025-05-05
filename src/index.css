@@ -1,0 +1,445 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(33, 37, 41);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+}
+
+#navbar {
+  width: 96%;
+  height: 5rem;
+  border-radius: 10px;
+  margin: 1.5rem auto;
+  background-color: #6741d9;
+  display: flex;
+  justify-content: space-between;
+}
+
+#navbar #title {
+  color: white;
+  margin: 0.8rem 0.8rem;
+  font-size: 2rem;
+}
+
+#navbar #searchBox {
+  align-self: center;
+  outline: none;
+  border: 0;
+  border-radius: 7px;
+  width: 27rem;
+  height: 3rem;
+  background-color: #7950f2;
+  font-size: 1.2rem;
+  padding: 1rem;
+  color: white;
+  transition: 0.3s;
+}
+
+#navbar #searchBox:focus {
+  transform: translateY(-3px);
+  -webkit-box-shadow: 0px 14px 22px -3px rgba(0, 0, 0, 0.17);
+  -moz-box-shadow: 0px 14px 22px -3px rgba(0, 0, 0, 0.17);
+  box-shadow: 0px 14px 22px -3px rgba(0, 0, 0, 0.17);
+}
+
+#navbar #searchBox::placeholder {
+  color: white;
+  opacity: 0.6;
+}
+
+#navbar #foundText {
+  color: white;
+  font-size: 1.5rem;
+  margin-top: 1.3rem;
+  margin-right: 1.3rem;
+}
+
+#main {
+  width: 57.5rem;
+  height: 48rem;
+  margin: 0 auto;
+  display: flex;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.movieList {
+  background-color: #2b3035;
+  border-radius: 8px;
+  width: 28rem;
+  height: 100%;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  position: relative;
+  padding-top: 2.5rem;
+  padding-bottom: 1rem;
+  overflow-y: scroll;
+}
+
+.style-error {
+  box-shadow: #b91c1c 0px 1px 0px 3px, #b91c1c -1px 0px 18px 4px;
+}
+
+.style-loading {
+  box-shadow: #d6d3d1 0px 1px 0px 3px, #d6d3d1 -1px 0px 15px 4px;
+}
+
+.movieList::-webkit-scrollbar {
+  display: none;
+}
+
+.movieList button {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.4rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  border: 0;
+  border-radius: 100%;
+  color: white;
+  font-weight: bold;
+  background-color: rgb(33, 37, 41);
+  font-size: 1.5rem;
+  z-index: 999;
+  cursor: pointer;
+}
+
+.movieList .movie {
+  width: 100%;
+  height: 6rem;
+  border-bottom: 2px solid gray;
+  display: flex;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: rgb(52, 58, 64);
+}
+
+.movieList .movie:hover {
+  background-color: rgb(52, 58, 64);
+}
+
+.movieList .movie img {
+  width: 3.5rem;
+  align-self: center;
+  margin-left: 1rem;
+}
+
+.movieList .movie div {
+  margin-left: 1rem;
+}
+
+.movieList .movie h3 {
+  color: white;
+  margin-top: 0.8rem;
+}
+
+#informationList {
+  background-color: #2b3035;
+  border-radius: 8px;
+  width: 28rem;
+  height: 100%;
+  margin-left: 1.5rem;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  position: relative;
+}
+
+#informationList #negativeButton {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.4rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  border: 0;
+  border-radius: 100%;
+  color: white;
+  font-weight: bold;
+  background-color: rgb(33, 37, 41);
+  font-size: 1.5rem;
+  z-index: 999;
+  cursor: pointer;
+}
+
+#moviesInformation {
+  height: 100%;
+}
+
+#moviesInformation #upperPart {
+  width: 100%;
+  height: 7rem;
+  background-color: rgb(52, 58, 64);
+  border-radius: 8px;
+  padding: 1.5rem 0 0 2rem;
+}
+
+#moviesInformation #upperPart h3 {
+  color: white;
+}
+
+#moviesInformation #upperPart div {
+  display: flex;
+  margin-top: 1rem;
+}
+
+#moviesInformation #upperPart p {
+  color: white;
+  margin-right: 1rem;
+  font-weight: bold;
+}
+
+#moviesInformation #lowerPart {
+  height: 41rem;
+  padding: 1rem 0;
+}
+
+#moviesInformation #lowerPart #movieWatched {
+  width: 100%;
+  height: 6rem;
+  border-bottom: 2px solid gray;
+  display: flex;
+  color: #fff;
+  padding: 0 1.9rem 0 0;
+  position: relative;
+}
+
+#moviesInformation #lowerPart #movieWatched svg {
+  position: absolute;
+  width: 1.8rem;
+  color: red;
+  right: 5px;
+  top: 2rem;
+  cursor: pointer;
+}
+
+#moviesInformation #lowerPart #movieWatched svg:hover {
+  color: #991b1b;
+}
+
+#moviesInformation #lowerPart #movieWatched #headerImage {
+  width: 3.5rem;
+  height: 5rem;
+  margin: auto 1rem;
+}
+
+#moviesInformation #lowerPart #movieWatched #headerImage img {
+  width: 3.5rem;
+  height: 5rem;
+}
+
+#moviesInformation #lowerPart #movieWatched #header-name-numbers {
+  width: 100%;
+  overflow-y: scroll;
+  padding: 0 0.5rem 1rem 0;
+}
+
+#moviesInformation #lowerPart #movieWatched #header-name-numbers::-webkit-scrollbar {
+  display: none;
+}
+
+#moviesInformation #lowerPart #movieWatched #header-name-numbers #nameMovieWatched {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-left: 1rem;
+  margin-top: 0.8rem;
+}
+
+#moviesInformation #lowerPart #movieWatched #header-name-numbers #informationMovieWatched {
+  font-weight: 400;
+  word-spacing: 4px;
+  margin-left: 0.7rem;
+  margin-top: 1rem;
+}
+
+#movieInformation {
+  height: 100%;
+}
+
+#movieInformation #upperPart {
+  height: 12rem;
+  background-color: rgb(52, 58, 64);
+  border-radius: 8px;
+  display: flex;
+  position: relative;
+}
+
+#movieInformation #upperPart #icon {
+  position: absolute;
+  left: 8px;
+  top: 0.5rem;
+  width: 1.8rem;
+  color: white;
+  background-color: #212529;
+  border-radius: 100%;
+  padding: 3px;
+  cursor: pointer;
+}
+
+#movieInformation #upperPart img {
+  width: 9rem;
+  height: 12rem;
+  border-radius: 8px 0 0 0;
+}
+
+#movieInformation #upperPart div {
+  padding: 0.9rem 0 0 1.5rem;
+  overflow-y: scroll;
+}
+
+#movieInformation #upperPart div::-webkit-scrollbar {
+  display: none;
+}
+
+#movieInformation #upperPart h2 {
+  font-size: 1.3rem;
+  color: white;
+}
+
+#movieInformation #upperPart h3 {
+  color: white;
+  margin-top: 0.7rem;
+  font-weight: 300;
+}
+
+#lowerPart {
+  height: 36rem;
+  padding: 3rem 1.5rem 1.5rem 1.5rem;
+  overflow-y: scroll;
+}
+
+#lowerPart::-webkit-scrollbar {
+  display: none;
+}
+
+#lowerPart .stars-box {
+  width: 22.5rem;
+  background-color: #343a40;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+#lowerPart .stars-box h4 {
+  color: white;
+  margin: auto 0;
+}
+
+#starBox {
+  border-radius: 8px;
+  display: flex;
+  margin-top: 1.5rem;
+}
+
+#starBox svg {
+  width: 1.8rem;
+  color: #fcc419;
+  cursor: pointer;
+}
+
+#starBox p {
+  color: #fcc419;
+  font-size: 1.9rem;
+  margin-left: 0.8rem;
+  margin-top: -0.5rem;
+}
+
+#lowerPart .stars-box .addToListBtn {
+  width: 20rem;
+  height: 2rem;
+  border: 0;
+  background-color: #6741d9;
+  color: white;
+  font-size: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+#lowerPart .stars-box .addToListBtn:hover {
+  opacity: 0.7;
+}
+
+.hidden {
+  display: none;
+}
+
+#lowerPart #movieDescription {
+  color: white;
+  margin-top: 3rem;
+  font-style: italic;
+  font-weight: 300;
+  padding: 0 1.5rem;
+  line-height: 1.4rem;
+}
+
+#lowerPart #movieActors {
+  color: white;
+  padding: 0 1.5rem;
+  font-weight: 300;
+  font-style: italic;
+  margin-top: 1.5rem;
+}
+
+#lowerPart #movieActors strong {
+  background-color: #343a40;
+  border-radius: 6px;
+  font-style: normal;
+  margin-right: 3px;
+  padding: 2px;
+}
+
+#lowerPart #movieWriter {
+  color: white;
+  padding: 0 1.5rem;
+  font-weight: 300;
+  font-style: italic;
+  margin-top: 1.5rem;
+}
+
+#lowerPart #movieWriter strong {
+  background-color: #343a40;
+  border-radius: 6px;
+  font-style: normal;
+  margin-right: 3px;
+  padding: 2px;
+}
+
+#text-Error {
+  color: white;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+#text-loading {
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 1rem;
+  animation: loading 2s infinite linear;
+}
+
+@keyframes loading {
+  0% {
+    text-shadow: 0 0 0;
+  }
+
+  50% {
+    text-shadow: 1px 3px 15px #ccc;
+  }
+
+  100% {
+    text-shadow: 0 0 0;
+  }
+}
