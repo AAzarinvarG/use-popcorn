@@ -118,7 +118,7 @@ function Main({ moviesData, isLoading, textError }) {
   const [selectMovie, setSelectMovie] = useState("");
 
   function clickOnMovie(imdb) {
-    fetch(`http://www.omdbapi.com/?apikey=${KEY}&i=${imdb}`)
+    fetch(`https://www.omdbapi.com/?apikey=${KEY}&i=${imdb}`)
       .then((res) => res.json())
       .then((data) => {
         setMovie(data);
