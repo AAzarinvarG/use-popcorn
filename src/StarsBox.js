@@ -15,7 +15,7 @@ export default function StarsBox({ maxRating, getImdbNumber }) {
     function () {
       getImdbNumber(rating);
     },
-    [rating]
+    [getImdbNumber, rating]
   );
 
   return (

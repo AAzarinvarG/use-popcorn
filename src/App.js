@@ -194,7 +194,7 @@ function Movie({ item, clickOnMovie, selectMovie }) {
       className={`movie ${item.imdbID === selectMovie ? "selected" : ""}`}
       onClick={() => clickOnMovie(item.imdbID)}
     >
-      <img src={item.Poster} />
+      <img src={item.Poster} alt="poster img" />
       <div>
         <h3> {item.Title} </h3>
         <h3> 📅 {item.Year} </h3>
